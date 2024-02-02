@@ -14,21 +14,21 @@ import { SearchContext } from '../App';
 const Home = () => {
 
   const dispatch = useDispatch();
-  const {categoryId, sort, currentPage} = useSelector((state) => state.filter);
-  
- 
+  const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
+
+
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
- 
 
-const onChangeCategory = (id) => {
-dispatch(setCategoryId(id))
-};
 
-const onChangePage = number => {
-  dispatch(setCurrentPage(number))
-}
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id))
+  };
+
+  const onChangePage = number => {
+    dispatch(setCurrentPage(number))
+  }
 
   React.useEffect(() => {
     setIsLoading(true)
@@ -38,13 +38,13 @@ const onChangePage = number => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-   
 
-axios.get(`https://659ef14f6ee7621d94dbc67c.mockapi.io/items?page=${currentPage}&limit=6&${category}&${search}&sortBy=${sortBy}&order=${order}`)
-.then((res) => {
-  setItems(res.data);
-  setIsLoading(false);
-});
+
+    axios.get(`https://659ef14f6ee7621d94dbc67c.mockapi.io/items?page=${currentPage}&limit=6&${category}&${search}&sortBy=${sortBy}&order=${order}`)
+      .then((res) => {
+        setItems(res.data);
+        setIsLoading(false);
+      });
 
     window.scrollTo(0, 0)
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
@@ -59,7 +59,8 @@ axios.get(`https://659ef14f6ee7621d94dbc67c.mockapi.io/items?page=${currentPage}
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+      <div className="content__items">
+        {isLoading ? skeletons : pizzas}</div>
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   )
