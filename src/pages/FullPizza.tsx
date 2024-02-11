@@ -4,8 +4,13 @@ import axios from 'axios';
 
 
 
-export const FullPizza = () => {
-  const [pizza, setPizza] = React.useState();
+export const FullPizza: React.FC = () => {
+  const [pizza, setPizza] = React.useState<{
+    imageUrl: string;
+    title: string;
+    price: number;
+  }>();
+
   const { id } = useParams();
   const navigate = useNavigate()
 
@@ -26,6 +31,7 @@ export const FullPizza = () => {
 
   if (!pizza) {
     return <>Загрузка...</>;
+
   }
 
 
