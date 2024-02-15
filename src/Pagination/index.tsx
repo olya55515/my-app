@@ -5,11 +5,11 @@ import styles from './Pagination.module.scss';
 
 type PaginationProps = {
   currentPage: number;
-  onChangePage: any;
+  onChangePage: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps>= ({currentPage, onChangePage}) => {
-  return (
+const Pagination: React.FC<PaginationProps>= ({currentPage, onChangePage}) => (
+  
     <ReactPaginate
       className={styles.root}
       breakLabel="..."
@@ -21,8 +21,8 @@ const Pagination: React.FC<PaginationProps>= ({currentPage, onChangePage}) => {
       forcePage={currentPage -1}
       renderOnZeroPageCount={null}
     />
-    
-  )
-}
+) 
+  
+
 
 export default Pagination;
