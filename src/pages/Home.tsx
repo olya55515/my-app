@@ -6,8 +6,6 @@ import { Sort, sortList } from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton'
 import Pagination from '../Pagination';
-import qs from 'qs'
-import { useNavigate } from 'react-router-dom'
 import { fetchPizzas} from '../redux/pizza/asyncActions';
 import { useAppDispatch } from '../redux/store';
 import { selectPizzaData } from '../redux/pizza/selectors';
@@ -17,10 +15,10 @@ import { add } from '../utils/math'
 
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const isSearch = React.useRef(false);
-  const isMounted = React.useRef(false);
+  // const isSearch = React.useRef(false);
+  // const isMounted = React.useRef(false);
 
 
   add(777, 888);

@@ -27,7 +27,7 @@ export const FullPizza: React.FC = () => {
     }
 
     fetchPizza();
-  }, [id]);
+  }, [id, navigate]);
 
   if (!pizza) {
     return <>Загрузка...</>;
@@ -37,7 +37,7 @@ export const FullPizza: React.FC = () => {
 
   return (
     <div className='container'>
-      <img src={pizza.imageUrl} />
+      <img src={pizza.imageUrl} alt={pizza.title}/>
       <h2>{pizza.title}</h2>
       <h4>{pizza.price} грн</h4>
      <Link to='/'>
